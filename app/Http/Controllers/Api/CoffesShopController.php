@@ -34,6 +34,7 @@ class CoffesShopController extends Controller
         "address" => CoffeesShopAddress::where('coffees_shop_id',$c->id)->get(),
         "differences" => CoffeesShopDifferences::where('coffees_shop_id',$c->id)->get(),
         "rating" => CoffeesShopRating::where('coffees_shop_id',$c->id)->get(),
+        "teste" => 'oi',
         "created_at" => $c->created_at,
         "updated_at" => $c->updated_at,
       ];
