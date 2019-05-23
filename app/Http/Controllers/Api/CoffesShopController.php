@@ -11,6 +11,9 @@ use Hash;
 
 // Models
 use App\Models\CoffeesShop;
+use App\Models\CoffeesShopAddress;
+use App\Models\CoffeesShopDifferences;
+use App\Models\CoffeesShopRating;
 
 class CoffesShopController extends Controller
 {
@@ -28,6 +31,9 @@ class CoffesShopController extends Controller
         "logo" => $c->logo,
         "description" => $c->description,
         "imgs" =>  $c->imgs,
+        "address" => CoffeesShopAddress::where('coffees_shop_id',$c->id)->get(),
+        "differences" => CoffeesShopDifferences::where('coffees_shop_id',$c->id)->get(),
+        "rating" => CoffeesShopRating::where('coffees_shop_id',$c->id)->get(),
         "created_at" => $c->created_at,
         "updated_at" => $c->updated_at,
       ];
