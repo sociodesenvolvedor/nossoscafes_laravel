@@ -27,6 +27,7 @@ class CoffesShopController extends Controller
       $new =
       [
         "id" =>  $c->id,
+        "idFake" =>  $c->id,
         "user_id" => $c->user_id,
         "logo" => $c->logo,
         "description" => $c->description,
