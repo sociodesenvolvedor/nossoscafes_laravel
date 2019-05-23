@@ -31,17 +31,16 @@ class CoffesShopController extends Controller
         "logo" => $c->logo,
         "description" => $c->description,
         "imgs" =>  $c->imgs,
-        "address" => count(CoffeesShopAddress::where('coffees_shop_id',$c->id)->get()),
+        "address" => CoffeesShopAddress::where('coffees_shop_id',$c->id)->get(),
         "differences" => CoffeesShopDifferences::where('coffees_shop_id',$c->id)->get(),
         "rating" => CoffeesShopRating::where('coffees_shop_id',$c->id)->get(),
-        "teste" => 'oi',
         "created_at" => $c->created_at,
         "updated_at" => $c->updated_at,
       ];
       array_push($data, $new);
     }
     if(count($coffeesShop) == 0) {return Response::json(array( 'error' => true, 'msg' => 'Not Found Data'),404); }
-    return Response::json(array( 'error' => false, 'msg' => 'Lista das Caféterias', 'data' => $coffeesShop),200);
+    return Response::json(array( 'error' => false, 'msg' => 'Lista das Caféterias Rapá', 'data' => $coffeesShop),200);
   }
 
   // public function get()
