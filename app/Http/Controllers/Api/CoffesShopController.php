@@ -41,7 +41,7 @@ class CoffesShopController extends Controller
       array_push($data, $new);
     }
     if(count($coffeesShop) == 0) {return Response::json(array( 'error' => true, 'msg' => 'Not Found Data'),404); }
-    return Response::json(array( 'error' => false, 'msg' => 'Lista das Caféterias Rapá', 'data' => $coffeesShop),200);
+    return Response::json(array( 'error' => false, 'msg' => 'Lista das Caféterias Rapá', 'data' => $data),200);
   }
 
   // public function get()
