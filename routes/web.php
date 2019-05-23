@@ -19,3 +19,6 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+/* API */
+Route::get('/api/coffeesShops', ['as' => 'api.coffeesShops', 'uses' => 'Api\CoffesShopController@get']);
