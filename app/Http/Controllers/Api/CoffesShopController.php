@@ -14,10 +14,54 @@ use App\Models\CoffeesShop;
 
 class CoffesShopController extends Controller
 {
+  //Pega tudo dos cafés shop
   public function get()
   {
+    $data = [];
     $coffeesShop = CoffeesShop::orderBy('id')->get();
+    foreach($coffeesShop as $c)
+    {
+      $new =
+      [
+        "id" =>  $c->id,
+        "user_id" => $c->user_id,
+        "logo" => $c->logo,
+        "description" => $c->description,
+        "imgs" =>  $c->imgs,
+        "created_at" => $c->created_at,
+        "updated_at" => $c->updated_at,
+      ];
+      array_push($data, $new);
+    }
     if(count($coffeesShop) == 0) {return Response::json(array( 'error' => true, 'msg' => 'Not Found Data'),404); }
-    return Response::json(array( 'error' => false, 'msg' => 'Lista', 'data' => $coffeesShop),200);
+    return Response::json(array( 'error' => false, 'msg' => 'Lista das Caféterias', 'data' => $coffeesShop),200);
   }
+
+  // public function get()
+  // {
+  //   $data = [];
+  //   $gallery = AppGallery::orderBy('order')->get();
+  //   if(count($gallery) == 0) {return Response::json(array( 'error' => true, 'msg' => 'Not Found Data'),404); }
+  //   foreach($gallery as $p)
+  //   {
+  //     $new =
+  //     [
+  //       "id" => $p->id,
+  //       "title" => $p->title,
+  //       "description" => $p->description,
+  //       "thumbnail" => $p->thumbnail,
+  //       "imgs" => $p->imgs,
+  //       "order" => $p->order,
+  //       "visibility" => $p->visibility,
+  //       "count_likes" => count(AppGalleryLikes::where('gallery_id',$p->id)->get()),
+  //       "count_comments" => count(AppGalleryComments::where('gallery_id',$p->id)->where('visibility',1)->get()),
+  //       "likes" => AppGalleryLikes::where('gallery_id',$p->id)->get(),
+  //       "comments" => AppGalleryComments::where('gallery_id',$p->id)->where('visibility',1)->get(),
+  //       "created_at" => $p->created_at,
+  //       "updated_at" => $p->updated_at,
+  //     ];
+  //     array_push($data, $new);
+  //   }
+  //   return Response::json(array( 'error' => false, 'msg' => 'Lista de Galeria', 'data' => $data),200);
+  // }
 }
