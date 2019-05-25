@@ -28,6 +28,7 @@ class CoffesShopController extends Controller
       [
         "id" =>  $c->id,
         "user_id" => $c->user_id,
+        "name" => $c->name,
         "logo" => $c->logo,
         "description" => $c->description,
         "imgs" =>  $c->imgs,
