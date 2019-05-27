@@ -45,6 +45,7 @@ class CoffesShopController extends Controller
         "differences" => CoffeesShopDifferences::where('coffees_shop_id',$c->id)->get(),
         "rating" => CoffeesShopRating::where('coffees_shop_id',$c->id)->get(),
         "totalRating" => $totalRating,
+        "totalRatingGeral" => $totalRating / ( count(CoffeesShopRating::where('coffees_shop_id',$c->id)->get()) * 4 ),
         "created_at" => $c->created_at,
         "updated_at" => $c->updated_at,
       ];
