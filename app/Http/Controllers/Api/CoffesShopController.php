@@ -26,7 +26,7 @@ class CoffesShopController extends Controller
     foreach($coffeesShop as $c)
     {
       $rating = CoffeesShopRating::where('coffees_shop_id',$c->id)->get();
-      foreach($totalStar as $ts)
+      foreach($rating as $ts)
       {
         $totalRating += $ts->food + $ts->services +  $ts->price + $ts->place;
       }
