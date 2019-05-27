@@ -39,7 +39,7 @@ class CoffesShopController extends Controller
         "logo" => $c->logo,
         "description" => $c->description,
         "imgs" =>  $c->imgs,
-        "banner" =>  json_decode($c->imgs[0]),
+        "banner" =>  json_decode($c->imgs),
         "address" => CoffeesShopAddress::where('coffees_shop_id',$c->id)->get(),
         "differences" => CoffeesShopDifferences::where('coffees_shop_id',$c->id)->get(),
         "rating" => CoffeesShopRating::where('coffees_shop_id',$c->id)->get(),
