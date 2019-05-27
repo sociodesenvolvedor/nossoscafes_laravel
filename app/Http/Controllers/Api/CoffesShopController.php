@@ -21,9 +21,16 @@ class CoffesShopController extends Controller
   public function get()
   {
     $data = [];
+    $totalRating = 0;
     $coffeesShop = CoffeesShop::orderBy('id')->get();
     foreach($coffeesShop as $c)
     {
+      $rating = CoffeesShopRating::where('coffees_shop_id',$c->id)->get();
+      foreach($totalStar as $ts)
+      {
+        $totalRating += $ts->food + $ts->services +  $ts->price + $ts->place;
+      }
+
       $new =
       [
         "id" =>  $c->id,
@@ -35,6 +42,7 @@ class CoffesShopController extends Controller
         "address" => CoffeesShopAddress::where('coffees_shop_id',$c->id)->get(),
         "differences" => CoffeesShopDifferences::where('coffees_shop_id',$c->id)->get(),
         "rating" => CoffeesShopRating::where('coffees_shop_id',$c->id)->get(),
+        "totalRating" => $totalRating,
         "created_at" => $c->created_at,
         "updated_at" => $c->updated_at,
       ];
